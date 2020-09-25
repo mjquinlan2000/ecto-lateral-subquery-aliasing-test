@@ -39,6 +39,16 @@ defmodule Dwight do
         battlestar_inserted_at: beet.battlestar_inserted_at
       })
 
-    Ecto.Adapters.SQL.to_sql(:all, Repo, query) |> elem(0) |> IO.puts()
+    sql = Ecto.Adapters.SQL.to_sql(:all, Repo, query) |> elem(0)
+
+    IO.puts(~s|
+SQL GENERATED:
+
+#{sql}
+    |)
+
+    count = Repo.aggregate(query, :count)
+
+    IO.puts(~s|COUNT RETURNED: #{count}|)
   end
 end
