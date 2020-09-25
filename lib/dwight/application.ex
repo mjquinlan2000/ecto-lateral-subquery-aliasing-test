@@ -7,8 +7,7 @@ defmodule Dwight.Application do
 
   def start(_type, _args) do
     children = [
-      # Starts a worker by calling: Dwight.Worker.start_link(arg)
-      # {Dwight.Worker, arg}
+      Dwight.Repo
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
